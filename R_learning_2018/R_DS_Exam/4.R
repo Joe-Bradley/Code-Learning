@@ -1,0 +1,5 @@
+a <- read.csv("cement.csv")
+lm.reg<-lm(Y~X1+X2+X3+X4, data=a)
+summary(lm.reg)
+lm.step <- step(lm.reg)
+summary(lm.step)

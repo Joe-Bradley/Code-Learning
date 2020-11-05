@@ -1,0 +1,25 @@
+library(bitops)
+library(RCurl)
+library(jsonlite)
+library(stringr)
+library(xml2)
+library(rvest)
+library(RSelenium) 
+library(rjson)
+#Java -jar D:/Java/selenium-server-standalone-3.5.1.jar
+
+remDr = remoteDriver('localhost',4444L,browserName='firefox')
+remDr$open()
+urljson = "http://dcfm.eastmoney.com/EM_MutiSvcExpandInterface/api/js/get?type=HSGTHIS&token=70f12f2f4f091e459a279469fe49eca5&filter=(MarketType=1)&js=var%20sIgEAEix={%22data%22:(x),%22pages%22:(tp)}&ps=20&p=3&sr=-1&st=DetailDate&rt=51748867"
+remDr$navigate(urljson)
+tpage <- remDr$getPageSource()
+pageSource <- tpage[[1]]
+web <- read_html(pageSource)
+jsontxt = web %>% html_text()
+jsont = substring(jsontxt,nchar("var sIgEAEix={"),nchar(jsontxt))
+jsondata1 <- fromJSON(jsont)
+jsdata <- fromJSON(jsondata1$data)
+jsondf = data.frame(matrix(unlist(jsondata1$data),nrow=length(jsondata1$data),byrow=T),stringsAsFactors=FALSE)
+a = matrix(unlist(jsondata1$data),nrow=length(jsondata1$data),byrow=T)
+b = t(a)
+c = data.frame(b,stringsAsFactors=FALSE)

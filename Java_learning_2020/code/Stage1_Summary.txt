@@ -1,0 +1,599 @@
+1.1 基本命令
+    DOS命令窗口: terminal
+    exit: 推出
+    cls: 清屏
+    cd C: \...
+    cd ..: 返回上一层
+    cd\: 返回到当前目录的根目录
+    c: 回车：到c盘
+    ipconfig: 查看本机ip地址
+
+1.2 Java基本概念
+    .java ----> .class
+    源文件 编译  字节码文件
+    javac.exe :Java编译器
+    java.exe :Java运行器  
+    eg：A.class ---->  java A
+    JDK\bin ----> javac.exe & java.exe
+
+
+2.1 配置classpath
+    1.临时路径
+        set classpath = D:\GitHub\java_learning\Day1 
+    2.查看路径
+        set classpath
+    3.删除路径
+        set classpath =
+
+2.2 关键字  
+    在Java中具有特殊意义的，全部小写
+    如：class   public    static    void……
+
+
+2.3 标识符
+    字母
+    下划线 + 【字母】【数字】【下划线】【$】
+    $
+    
+    区分大小写
+    类名的每个单词首字母大写
+    变量名称、方法名称、参数名称--->驼峰命名法
+
+2.4 数据类型
+    1.字符串: string: "abc"
+    2.字符: char: 'a', 'b', 'c'
+    3.整数类型: byte short int(default) long: 123
+    4.布尔类型: boolean: true, false
+    5.浮点类型: double float: 3.1415
+
+    对byte short int char类型赋值时，如果没有超出该类型取值范围则可以直接赋值
+    long b = 1;
+    b = 12314567899; //超了
+    b = 12331231232L; //没问题
+
+    对double,float赋值时
+    float x = 12.21f 
+    float x = (float)12.12 //强制转换
+    double x = 12.12
+
+    对char赋值时:
+    整数类型与字符类型之间是可以进行相互转换的
+        char a = 100; 
+        int a = "a";
+    
+
+
+2.5 字符编码：按某种格式某种规定将数据存在计算机中
+    1.ASCII:
+        'a'------- >97   
+        'b'------- >98
+        'A'------- >65
+        '0'------- >48
+        ' '------- >32
+    2.iso8859-1:西欧语言编码，兼容ASCII
+    3.GBK/GB2312:中文编码
+    4.Unicode: 统一全球所有国家的文字
+        utf-8
+        utf-16
+        utf-32
+        java源代码采用unicode编码
+
+2.6 变量
+    int a; a = 10;
+    int a = 10;
+    int a,b,c; a=10,b=10,c=10;
+
+2.7 转义序列符
+    \n 回车
+    \t 空格
+    \\ 禁用第一个转移符的功能
+    \" 输出一个
+        eg: "\"D:\\abc""
+    \u0000 表示unicode转义序列符，输出一个空格
+        eg: Hello\u0000World ------> Hello World
+        eg: Hello\u2605World ------> Hello*World
+
+2.8 变量分类
+    1.局部变量
+    2.成员变量
+        eg:
+        class var{
+            int a; //成员变量
+            public void main(string[] args){
+                int b; //局部变量
+            }
+        }
+    
+    1.基本类型变量: 在内存中储存真实的值
+        eg: int char double 
+    2.引用数据类型变量
+        eg: string 
+
+2.9 内存包含
+    栈: 存放方法及方法中的局部变量 
+    堆: 存方法对象
+    方法区: 代码片段,常量池,静态属性
+
+
+2.10 常量池（！！！）
+
+2.11 类型之间转换
+    1.自动类型转换也叫做隐式类型转换
+        当取值范围小的类型赋给取值范围大的类型:
+        byte a = 1;
+        int b = a;
+        float c = b;
+        double d = c;
+    2.强制类型转换也叫做显式类型转换
+        当取值范围大的类型赋给取值范围小的类型时，则必须进行强制
+        int a = (int)3.14
+
+3.1 运算符
+    1.当+: 两边的操作数都是数值类型，则做加法运算
+    2.当+: 两边的操作数中有一个为非数值类型，则做连接,最终连接后的结果为String
+    3.当-: 两边的操作数都必须保证是数值类型
+    4.前置++：将++编写在变量名称前面，先自身加1，然后再做其他运算
+        int a = 3;
+        int b = ++a;
+        结果: a = 4, b = 4
+    5.后置++：将++编写在变量名称后面，先做其他运算，然后再自身加1
+        int x = 5;
+        int y = x++;  
+        结果: y = 5, x = 6
+    6.逻辑运算符
+        逻辑与&			
+        逻辑或|		
+        逻辑异或^		
+        逻辑非!
+
+3.2 输入
+	import java.util.Scanner; //导入包，必须位于Java源文件中的第一行
+	
+    Scanner input = new Scanner(System.in); //创建Scanner对象
+	
+    System.out.print("please enter:"); //友好提示
+    
+    int age = input.nextInt();
+	
+    char sex = input.next().charAt(0); //字符串中获取第0个位置中的值
+	
+    double score = input.nextDouble();
+	
+    boolean isFlag = input.nextBoolean();
+	
+    input.close();
+    
+    System.out.println("the result is:")
+	
+    System.out.println(name+'\n'+age+'\n'+sex+'\n'+score+'\n'+isFlag);
+
+3.3 控制流程
+    1.if语句:
+        if(score > 95){
+            System.out.println("有奖励");
+        }
+        else if(score < 80 && score >0){
+			System.out.println("无奖励");
+		}
+        else{
+            System.out.println("发红包");
+        }
+    //注意：多重if选择结构中的条件顺序可以颠倒，但是可能会影响程序的运行结果
+    //解决办法：当颠倒时，条件必须编写严谨
+    2.三目运算符:
+        System.out.println(score > 95 ? "有奖励" : "发红包")
+    3.switch:
+        eg1:
+            switch(info){
+            case "第一名":
+                System.out.println("奖励10W");
+                break;  //表示中断，当遇到break则执行switch case外面的语句
+            case "第二名":
+                System.out.println("奖励5W");
+                break;
+            case "第三名":
+                System.out.println("奖励2W");
+                break;
+            default:
+                System.out.println("对不起，没有任何奖励!");
+                break;
+            }
+		eg2:
+            switch(week){
+            case '1':
+            case '2':
+            case '4':
+            case '6':
+                System.out.println("studying");
+                break;
+            case '3':
+            case '5':
+                System.out.println("www");
+                break;
+            default:
+                System.out.println("rest");
+                break;
+            }
+
+3.4 循环
+    1.for循环:
+        for(int i = 1;i <= 5;i++){
+			System.out.println("the" + i + "times");
+		}
+    2.while循环:
+        int i = 1;
+		while(i <= 10){
+			System.out.println(i);
+			i++;
+		}
+    3.do while循环:
+		int i = 0;
+        do{
+            System.out.println("hello");
+            if(i==10){
+                break;
+            }
+            i++;
+		}while(true);
+
+4.1 方法
+    eg1:
+        class Method01{
+            public static void print(){
+                System.out.print("hello");
+            }
+            public static int sum(){
+		        int s = 1 + 2;
+		        return s; 
+	        }
+            public static String result(){
+		        if(12 % 2 == 0){
+			        return "是偶数";
+		        }else{
+			        return "是奇数";
+		        }
+            }
+            public static void main(String[] args){
+                Method01.print();
+
+                int a = Method01.sum();
+                System.out.println(a);
+
+                String s = Method01.result();
+		        System.out.println(s);
+            }
+        }
+
+
+4.2 类
+    1.Car:
+    编写车类，属性：颜色、品牌、价格 //属性也叫做成员变量
+    编写车的测试类，创建车的对象
+    class Car{
+        String color;
+        String brand;
+        int price;
+        
+        //构造方法1
+        public Car(){
+
+        }
+
+        //构造方法2: 带参构造方法,完成对id和price赋值
+        public Car(String id,int price){
+            this.id = id;
+            this.price = price;
+        }
+
+        //构造方法3: 编写对所有属性赋值的构造方法
+        public Car(String id,String color,int price){
+            this.id = id;
+            this.color = color;
+            this.price = price;
+        }
+
+        //构造方法4: 编写第带三个参数赋值的构造方法
+        public Car(String id,String color,int price){
+            this(id,color,price); 
+        }
+
+        //方法1:
+        public void show(){
+            int a = 123;
+            System.out.println("a = " + a);
+        }
+
+        //方法2:
+        public void print(){
+            //总结：在同一个类中，成员变量的名字可以与局部变量的名字同名
+            //但是局部变量名字优先，也就是就近优先，如果非要访问成员变量则必须添加this.
+            String color = "灰色";  //color是局部变量
+            System.out.println("输出局部变量color的值：" + color);
+            System.out.println("输出成员变量color的值：" + this.color);
+            }
+
+        //方法3:
+        public void setBrand(String brand){ 
+            this.brand = brand;
+        }
+    }
+
+    class CarTest{
+        public static void main(String[] args){
+            Car c3 = new Car();
+            c3.setBrand("大众");
+            c3.color = "White"
+            System.out.println("Brand: " + c3.brand);
+        }
+    }
+    
+    2.Dog:
+	编写狗类，属性：品种、颜色、名字、年龄、性别，方法：输出狗的信息
+	编写狗的测试类，实例化狗，调用狗的方法输出信息
+    class Dog{
+        //属性也叫做成员变量
+        String strain;
+        String color;
+        String name;
+        int age;
+        char sex;
+        //无参构造方法
+        public Dog(){
+            strain = "土狗";
+            color = "黑色";
+            name = "旺财";
+            age = 5;
+            sex = '公';
+        }
+        //带参构造方法
+        public Dog(String strain,String color,String name,int age,char sex){
+            this.strain = strain;
+            this.color = color;
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        public Dog(String name){
+            this.name = name;
+        }
+        public Dog(int age){
+            this.age = age;
+        }
+        //普通的方法，不是构造方法
+        public void Dog(String name){
+            this.name = name;
+        }
+        //方法：输出狗的信息
+        public void print(){
+            System.out.println("品种: " + strain + "\n颜色：" + color + "\n名字：" + name + "\n年龄：" + age + "\n性别：" + sex);
+        }
+    }
+    class DogTest{
+        public static void main(String[] args){
+            Dog d = new Dog();
+            //第一种方法：完成对对象中的属性赋值，使用引用名称.属性名称 = 值;
+            d.strain = "拉布拉多犬";
+            d.color = "黄色";
+            d.name = "小黄";
+            d.age = 3;
+            d.sex = '公';
+            d.print();
+
+            //第二种方法：完成对对象中的属性赋值，使用构造方法完成
+            Dog d2 = new Dog();
+            d2.print();
+        
+            //第三种方法：创建对象同时完成对所有属性赋值
+            Dog d5 = new Dog("哈士奇","白色","二哈",4,'公');
+            d5.print();
+        }
+    }
+
+    3.Student
+    class Student{
+        String name;  //默认值为null
+        int age;	//默认值为0
+        String sex;	//默认值为\u0000
+        String address;	//默认值为null
+        public void study(){
+            System.out.println("Learning now");
+        }
+    }
+    //编写学生的测试类
+    class StudentTest{
+        public static void main(String[] args){
+            Student zs = new Student();
+            System.out.println(zs.name);  //null
+            System.out.println(zs.age);  //0
+            System.out.println(zs.sex);  //null
+            System.out.println(zs.address); //null
+            zs.name = "Joe";
+            zs.age = 19;
+            zs.sex = "Male";
+            zs.address = "Beijing";
+            System.out.println("Name:" + zs.name + "\nAge:" + zs.age + "\nSex:" + zs.sex + "\nAddress:" + zs.address);
+            zs.study();
+        }
+    }
+
+    4.Car
+    编写车类，属性：车牌号、颜色、价格，方法：输出车的信息
+    编写车的测试类，创建车的对象，输出车的信息
+    class Car{
+        //构造方法
+        public Car(){
+
+        }
+        //带参构造方法,完成对id和price赋值
+        public Car(String id,int price){
+            this.id = id;
+            this.price = price;
+        }
+        //编写对所有属性赋值的构造方法
+        /*public Car(String id,String color,int price){
+            this.id = id;
+            this.color = color;
+            this.price = price;
+        }*/
+        //编写第二种带三个参数赋值的构造方法
+        public Car(String id,String color,int price){
+            //将局部变量id和price的值，给带两个参数的构造方法赋值
+            /*this(id,price);
+            this.color = color;*/
+
+            //this(id,color,price);  //构造方法不能出现递归调用
+        }
+        //属性
+        String id;
+        String color;
+        int price;
+        //方法
+        public void print(){
+            //this();  //出现编译错误，必须是构造方法中第一个语句
+            //在本类的方法中，可以直接方法本类中的成员变量(属性)
+            //System.out.println("车牌号：" + id + "\n颜色：" + color + "\n价格：" + price);
+            //上一条语句，可以编写为如下：
+            System.out.println("车牌号：" + this.id + "\n颜色：" + this.color + "\n价格：" + this.price);
+        }
+        public void print2(String id){ //id是形参，属于局部变量
+            System.out.println("输出成员变量id: " + this.id);
+        }
+        public void print3(){
+            //调用本类中的print方法,可以直接使用：方法名称([参数列表]);
+            this.print();  //等价于 print();
+        }
+    }
+    //编写测试类
+    class CarTest{
+        public static void main(String[] args){
+            //实例化车
+            /*Car c = new Car();
+            c.print();
+            //System.out.println(this.id); //出现编译错误，因为this.只能在本类(当前类)中使用
+
+            Car car = new Car();
+            car.print(); */
+
+            /*Car c3 = new Car();
+            c3.print3(); */
+
+            //创建对象同时执行带两个参数的构造方法
+            Car c4 = new Car("京A88888",8000000);
+            c4.print();
+
+            System.out.println();
+            Car c5 = new Car("沪C55555","黄色",5000000);
+            c5.print();
+        }
+    }
+
+    5.空指针异常???
+        在访问某个对象中的属性或方法之前必须保证该引用名称中存放的是对象的地址(引用)
+    
+    6.封装
+	    定义：隐藏类的内部信息，不允许外部程序直接访问，而是通过方法进行操作
+	    
+        第一步：将属性设置为私有的private,只能在本类中使用
+	        private int age;
+        第二步：编写对应属性的赋值setXxx和取值getXxx方法
+	        public void setAge(int age){
+                if(age >= 0 && age <= 100){
+                    this.age = age;
+                }else{
+                    this.age = 18;
+                }
+            }
+            public int getAge(){
+                return age;
+            }
+    
+    7.this：
+    this关键字可以访问本类中的实例变量
+        当局部变量和成员变量没有同名时，则编写属性名等价于this.属性名
+            如：id  等价于  this.id
+        当局部变量和成员变量同名时，并且访问成员变量则必须使用this.
+    this关键字可以访问本类中的实例方法
+        方法名称([参数列表]);  等价于  this.方法名称([参数列表]);
+    this关键字还可以访问本类中的其他构造方法
+        this(); //访问本类无参构造方法
+        this([实参列表]);
+        当使用this访问本类构造方法时，则只能编写在构造方法中，并且是第一条语句
+        构造方法不能出现递归调用
+
+4.3 参数传递
+    1.基本类型作为参数传递
+    public class Test1 {
+        public static void changeData(int n) {
+            n = 10;
+        }
+        public static void main(String[] args) {
+            int n = 3;
+            System.out.println("Before change, n = " + n);
+            changeData(n);
+            System.out.println("After changeData(n), n = " + n);
+        }
+    }
+    2.引用类型的参数传递
+    public class Test2 {
+        public static void changeData(StringBuffer strBuf) {
+            strBuf.append("World!");
+        }
+        public static void main(String[] args) {
+            StringBuffer sb = new StringBuffer("Hello ");
+            System.out.println("Before change, sb = " + sb);
+            changeData(sb);
+            System.out.println("After changeData(n), sb = " + sb);
+        }
+    }
+
+4.4 类的继承
+    1.父类Animal（Object超类）
+    class Animal extends Object{     //equals to class Animal 
+        String name;
+        int age;
+        String color;
+        public void show(){
+            System.out.println("Name: " + name + "\nAge: " + age + "\nColor:" + color);
+        }
+        public Object getInfo(){
+            return null;
+        }
+    }
+    2.子类Dog
+    class Dog extends Animal{
+        String strain;
+        //重写也叫做覆盖override:在子类中重写父类的方法，
+        //必须与父类的方法名称一致、参数列表一致、返回类型一致、修饰符一致
+        //在子类中可以直接方法父类中的属性(前提：父类中属性没有使用private修饰)
+        //重写父类的show方法
+        public void show(){
+            System.out.println("Name: "+name+"\nAge: "+age+"\nColor: "+color+"\nStrain: "+strain);
+        }
+        //重写父类的getInfo方法
+        public String getInfo(){
+            return "OK";
+        }
+    }
+    3.子类Cat
+    class Cat extends Animal{
+	    char sex;
+    }
+    4.子类不能重写：
+        构造方法不能重写
+        属性不能重写
+        静态方法不能重写
+        私有方法不能重写
+    5.1 this关键字和super关键字区别
+        this关键字
+            代表当前这个对象
+            this可以访问本类中的实例变量、实例方法也可以方法本类中的其他构造方法
+            this还可以访问父类中的实例变量、实例方法
+        super关键字
+            表示超类或父类
+            super只能在子类中使用，可以访问父类中的实例变量、实例方法、还可以访问父类的构造方法
+
+
+
+
+
+
