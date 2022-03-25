@@ -4,9 +4,9 @@ Created on Thu May  2 10:32:17 2019
 
 @author: lenovo
 """
-#7.1 read & readline % readlines
-#read: str; readline: str; readlines: list
-#read(x) exactly x bytes
+#7.1 1 read & readline % readlines
+#1 read: str; readline: str; readlines: list
+#1 read(x) exactly x bytes
 #readline(x) at most 1 line and x bytes; if line is null whatever x it returns null
 #readlines(x) at least 1 line and x bytes
 
@@ -31,11 +31,11 @@ else:
     print("55555")
 a1.close()
 
-#7.3 write and writelines
-#'w': clear before write sth, you cannot read
-#'a': write sth after the end
-#'r+': read and write
-#you must write str into the txt file
+#7.3 3 write and writelines
+#'w': clear before 3 write sth, you cannot 1 read
+#'a': 3 write sth after the end
+#'r+': 1 read and 3 write
+#you must 3 write str into the txt file
 
 a3 = open("C:/Users/lenovo/Desktop/7_3.txt","w")
 a3.write("1\n")

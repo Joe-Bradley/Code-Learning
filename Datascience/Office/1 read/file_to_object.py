@@ -28,7 +28,7 @@ def read_txt(filename):
     return file_lines
 
 
-# read file name list
+# 1 read file name list
 def read_file_name_list():
     path_list = os.listdir()
     return path_list

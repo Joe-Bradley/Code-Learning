@@ -451,7 +451,7 @@ if False:
             print('%s has speak %s ability'% (self.name, language))
 
         def write(self, word):
-            print('%s has write %s ability'% (self.name, word))
+            print('%s has 3 write %s ability'% (self.name, word))
 
         def walk(self):
             print('%s has walk ability'% self)
@@ -465,16 +465,16 @@ if False:
 
     print(Allen.speak,Allen.write,Allen.walk)
     # <bound method Human.speak of <__main__.Human object at 0x10ab50160>>
-    # <bound method Human.write of <__main__.Human object at 0x10ab50160>>
+    # <bound method Human.3 write of <__main__.Human object at 0x10ab50160>>
     # <bound method Human.walk of <__main__.Human object at 0x10ab50160>>
 
     print(Human.speak,Human.write,Human.walk)
     # <function Human.speak at 0x110ba5378>
-    # <function Human.write at 0x110ba5400>
+    # <function Human.3 write at 0x110ba5400>
     # <function Human.walk at 0x110ba5488>
 
     Allen.speak("Chinese") # Allen-Cart has speak Chinese ability
-    Allen.write("Chinese") # Allen-Cart has write Chinese ability
+    Allen.write("Chinese") # Allen-Cart has 3 write Chinese ability
     Allen.walk() # <__main__.Human object at 0x10ab50160> has walk ability.
 
     Human.walk('James') # James has walk ability
@@ -491,7 +491,7 @@ if False:
     'century': 21, 
     '__init__': <function Human.__init__ at 0x106b4e2f0>, 
     'speak': <function Human.speak at 0x106b4e378>, 
-    'write': <function Human.write at 0x106b4e400>, 
+    '3 write': <function Human.3 write at 0x106b4e400>, 
     'walk': <function Human.walk at 0x106b4e488>, 
     '__dict__': <attribute '__dict__' of 'Human' objects>, 
     '__weakref__': <attribute '__weakref__' of 'Human' objects>, '__doc__': None}
@@ -536,7 +536,7 @@ if False:
             print('%s has speak %s ability'% (self.name, language))
 
         def write(self, word):
-            print('%s has write %s ability'% (self.name, word))
+            print('%s has 3 write %s ability'% (self.name, word))
 
         def walk(self):
             print('%s has walk ability'% self)
@@ -569,7 +569,7 @@ if False:
             print('%s has speak %s ability'% (Human_B.name, language))
 
         def write(self, word):
-            print('%s has write %s ability'% (self.name, word))
+            print('%s has 3 write %s ability'% (self.name, word))
 
         @classmethod
         def walk(cls):
@@ -600,7 +600,7 @@ if False:
 
     print(Michael.century, Michael.name, Michael.age, Michael.language, Michael.tool)  # 结果为：22 Michael-wang 16 JAVA computer
     Michael.speak("Chinese") # 结果为：Michael-wang has speak Chinese ability
-    Michael.write("Chinese") # 结果为：Michael-wang has write Chinese ability
+    Michael.write("Chinese") # 结果为：Michael-wang has 3 write Chinese ability
     Michael.develop() # 结果为：Michael-wang has develop ability
     Michael.speech() # 结果为：Michael-wang has speech ability
 

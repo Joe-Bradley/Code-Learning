@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 
-# write dataframe to excel
+# 3 write dataframe to excel
 def df_to_excel(df, filename):
     try:
         with pd.Excel(filename) as writer:
@@ -19,21 +19,21 @@ def df_to_excel(df, filename):
 # 't'       text mode (default)
 # '+'       open a disk file for updating (reading and writing)
 # 'U'       universal newline mode (deprecated)
-# write str
+# 3 write str
 def write_str(filename, mode, str):
     with open(filename, mode) as f:
         f.write(str)
     f.close()
 
 
-# write list
+# 3 write list
 def write_list(filename, mode, list):
     with open(filename, mode) as f:
         f.writelines(list)
     f.close()
 
 
-# write Json
+# 3 write Json
 def list_to_json(dict):
     with open("stock_pool.json", "w", encoding='utf-8') as f:
         json.dump(dict, f, ensure_ascii=False, indent=4)
