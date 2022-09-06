@@ -1,5 +1,6 @@
 #ggplot2
 #scatter diagram, line chart, bar chart, histogram, box plot, pie
+library(ggplot2)
 
 ggplot(mtcars,aes(x=wt,y=mpg)) + geom_point()
 
